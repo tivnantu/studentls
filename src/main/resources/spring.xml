@@ -62,4 +62,8 @@
         </tx:attributes>
     </tx:advice>
 
+    <!--  restTemplate bean，用于调用第三方api  -->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+
+    </bean>
 </beans>
