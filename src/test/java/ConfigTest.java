@@ -23,6 +23,9 @@ public class ConfigTest {
     @Autowired
     RestTemplate restTemplate;
 
+    /**
+     * 测试restTemplate
+     */
     @Test
     public void restTemplateBeanTest() {
 
