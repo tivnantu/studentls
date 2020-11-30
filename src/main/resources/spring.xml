@@ -37,7 +37,7 @@
 
     <!--  配置扫描器。将mybatis接口的实现加入到ioc中  -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.tivnan.studentls.dao"></property>
+        <property name="basePackage" value="cn.tivnan.studentls.dao"></property>
     </bean>
 
 
