@@ -94,25 +94,6 @@ public class UserService {
     }
 
     /**
-     * 判断教师/学生的身份是否在教务系统还存在
-     * 如果存在则会拉取信息
-     *
-     * @param type 用户身份
-     * @param id   用户id
-     * @return 在教务系统中的用户的身份信息
-     */
-    public User getUserFromEdu(String type, Integer id) {
-
-        HashMap<String, Object> map = new HashMap<>(2);
-        map.put("type", type);
-        map.put("id", id);
-
-        String url = "http://112.74.95.237:5000/webservice/getUserInfo";
-
-        return restTemplate.getForObject(url, User.class, map);
-    }
-
-    /**
      * 用户认证身份的操作
      *
      * @param type   用户身份
@@ -164,10 +145,29 @@ public class UserService {
             } catch (Exception e) {
                 insertState = 0;
             }
-            
+
             return insertState > 0 ? teacher : null;
         }
 
         return null;
+    }
+
+    /**
+     * 判断教师/学生的身份是否在教务系统还存在
+     * 如果存在则会拉取信息
+     *
+     * @param type 用户身份
+     * @param id   用户id
+     * @return 在教务系统中的用户的身份信息
+     */
+    public User getUserFromEdu(String type, Integer id) {
+
+        HashMap<String, Object> map = new HashMap<>(2);
+        map.put("type", type);
+        map.put("id", id);
+
+        String url = "http://112.74.95.237:5000/webservice/getUserInfo";
+
+        return restTemplate.getForObject(url, User.class, map);
     }
 }

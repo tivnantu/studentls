@@ -39,6 +39,7 @@ public class LoginController {
 
         //获取OpenId，然后从数据库读取用户数据
         String openId = OpenIdUtil.getOpenId(code);
+        // String openId = code;
         User user = userService.login(openId);
 
         HashMap<String, Object> map = new HashMap<>();
