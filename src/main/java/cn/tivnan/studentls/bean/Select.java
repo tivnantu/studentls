@@ -5,6 +5,14 @@ public class Select {
 
     private Integer timeId;
 
+    public Select() {
+    }
+
+    public Select(Integer noteId, Integer timeId) {
+        this.noteId = noteId;
+        this.timeId = timeId;
+    }
+
     public Integer getNoteId() {
         return noteId;
     }

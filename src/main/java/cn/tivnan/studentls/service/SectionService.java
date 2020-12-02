@@ -29,7 +29,7 @@ public class SectionService {
         map.put("endTime", endTime);
         map.put("id", id);
 
-        String url = "http://112.74.95.237:5000/webservice/loadTakeSection";
+        String url = "http://112.74.95.237:5000/webservice/loadTakeSection?startTime={startTime}&endTime={endTime}&id={id}";
 
         String sectionStr = restTemplate.getForObject(url, String.class, map);
 

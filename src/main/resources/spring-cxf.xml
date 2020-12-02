@@ -7,6 +7,6 @@
     <!-- 自动扫描webservice -->
     <context:component-scan base-package="cn.tivnan.studentls.webservice" />
 
-    <!--<jaxws:endpoint   implementor="cn.tivnan.studentls.webservice.AttendanceImpl" address="/Attendance"/>-->
+    <jaxws:endpoint   implementor="cn.tivnan.studentls.webservice.AttendanceImpl" address="/Attendance"/>
 
 </beans>

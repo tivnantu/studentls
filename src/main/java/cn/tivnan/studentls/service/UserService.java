@@ -4,6 +4,7 @@ import cn.tivnan.studentls.bean.*;
 import cn.tivnan.studentls.dao.StudentMapper;
 import cn.tivnan.studentls.dao.TeacherMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -103,7 +104,6 @@ public class UserService {
      */
     public User auth(String type, Integer id, String openId) {
         User userFromEdu = getUserFromEdu(type, id);
-
         //确认教务系统是否存在该id所对应的身份
         if (userFromEdu == null) {
             return null;
@@ -166,8 +166,11 @@ public class UserService {
         map.put("type", type);
         map.put("id", id);
 
-        String url = "http://112.74.95.237:5000/webservice/getUserInfo";
+        String url = "http://112.74.95.237:5000/webservice/getUserInfo?type={type}&id={id}";
 
-        return restTemplate.getForObject(url, User.class, map);
+        User user = restTemplate.getForObject(url, User.class, map);
+
+        return user;
     }
+
 }
