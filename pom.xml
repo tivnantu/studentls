@@ -95,20 +95,27 @@
             <version>1.4.0</version>
         </dependency>
 
-        <!--  json  -->
+          <!--json  -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.11.3</version>
         </dependency>
 
-        <!--  用于发送http请求  -->
+        <!--<dependency>-->
+        <!--    <groupId>com.alibaba</groupId>-->
+        <!--    <artifactId>fastjson</artifactId>-->
+        <!--    <version>1.2.75</version>-->
+        <!--</dependency>-->
+
+
+        <!--  用于发送http请求     -->
         <!--  调用webservice及其他API  -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--    <groupId>org.apache.httpcomponents</groupId>-->
+        <!--    <artifactId>httpclient</artifactId>-->
+        <!--    <version>4.5.13</version>-->
+        <!--</dependency>-->
 
         <!--  cxf框架  -->
         <!--  用于构建webservice服务  -->

@@ -6,6 +6,8 @@
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
@@ -34,13 +36,12 @@
         </javaClientGenerator>
 
 
-        <table tableName="teacher" domainObjectName="Teacher"></table>
-        <table tableName="student" domainObjectName="Student"></table>
+        <!--<table tableName="teacher" domainObjectName="Teacher"></table>-->
+        <!--<table tableName="student" domainObjectName="Student"></table>-->
 
-        <table tableName="note" domainObjectName="Note"></table>
+        <!--<table tableName="note" domainObjectName="Note"></table>-->
 
-        <table tableName="selects" domainObjectName="Select"></table>
+        <!--<table tableName="selects" domainObjectName="Select"></table>-->
         <table tableName="reviews" domainObjectName="Review"></table>
-
     </context>
 </generatorConfiguration>

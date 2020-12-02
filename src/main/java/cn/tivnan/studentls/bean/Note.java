@@ -15,6 +15,43 @@ public class Note {
 
     private Integer studentId;
 
+    public Note() {
+    }
+
+
+    public Note(Integer noteId, String startTime, String endTime, String content, Integer state, Integer type, Integer studentId) {
+        this.noteId = noteId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.content = content;
+        this.state = state;
+        this.type = type;
+        this.studentId = studentId;
+    }
+
+    public Note(String startTime, String endTime, String content, Integer state, Integer type, Integer studentId) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.content = content;
+        this.state = state;
+        this.type = type;
+        this.studentId = studentId;
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "noteId=" + noteId +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", content='" + content + '\'' +
+                ", state=" + state +
+                ", type=" + type +
+                ", studentId=" + studentId +
+                '}';
+    }
+
+
     public Integer getNoteId() {
         return noteId;
     }

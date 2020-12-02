@@ -11,7 +11,7 @@
 
     <!--  类型别名  -->
     <typeAliases>
-        <package name="com.tivnan.studentls.bean"/>
+        <package name="cn.tivnan.studentls.bean"/>
     </typeAliases>
 
 
