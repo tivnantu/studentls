@@ -1,11 +1,15 @@
 package cn.tivnan.studentls.webservice;
 
-import cn.tivnan.studentls.bean.SelectExample;
-import cn.tivnan.studentls.dao.SelectMapper;
+import cn.tivnan.studentls.bean.Student;
+import cn.tivnan.studentls.dao.NoteMapper;
+import cn.tivnan.studentls.dao.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.jws.WebService;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @project: studentls
@@ -19,20 +23,28 @@ import javax.jws.WebService;
 public class AttendanceImpl implements cn.tivnan.studentls.webservice.Attendance {
 
     @Autowired
-    SelectMapper selectMapper;
+    NoteMapper noteMapper;
+
+    @Autowired
+    StudentMapper studentMapper;
+
 
     @Override
-    public Integer leaveNum(Integer timeId) {
+    public String leaveNum(Integer timeId, String courseDate) {
 
-        SelectExample example = new SelectExample();
-        SelectExample.Criteria criteria = example.createCriteria();
-        criteria.andTimeIdEqualTo(timeId);
+        String str = "";
 
+        List<Integer> leaStuNums = noteMapper.getLeaStuNum(timeId, courseDate);
 
-        long l = selectMapper.countByExample(example);
+        str += leaStuNums.size() + "%";
 
-        return Math.toIntExact(l);
+        ArrayList<String> list = new ArrayList<>();
+
+        for (Integer leaStuNum : leaStuNums) {
+            Student student = studentMapper.selectByPrimaryKey(leaStuNum);
+            str += student.getName() + "%";
+        }
+
+        return str;
     }
-
-
 }

@@ -5,5 +5,5 @@ import javax.jws.WebService;
 
 @WebService(name = "Attendance", targetNamespace = "http://studentls.tivnan.cn/")
 public interface Attendance {
-    Integer leaveNum(@WebParam(name = "timeId") Integer timeId);
+    public String leaveNum(@WebParam(name = "timeId") Integer timeId, @WebParam(name = "courseDate") String courseDate);
 }

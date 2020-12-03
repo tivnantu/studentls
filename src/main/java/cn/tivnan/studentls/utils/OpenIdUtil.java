@@ -33,32 +33,23 @@ public class OpenIdUtil {
 
     public static String getOpenId(String code) {
 
-        HashMap<String, String> map = new HashMap<>(4);
-        map.put("appid", APPID);
-        map.put("secret", APPSECRET);
-        map.put("js_code", code);
-        map.put("grant_type", "authorization_code");
-
-        String url = "https://api.weixin.qq.com/sns/jscode2session";
-
-        OpenIdBean openIdBean = openIdUtil.restTemplate.getForObject(url, OpenIdBean.class, map);
-
-        return openIdBean.getOpenId();
+        return null;
     }
+    //     HashMap<String, String> map = new HashMap<>(3);
+    //     map.put("appid", APPID);
+    //     map.put("secret", APPSECRET);
+    //     map.put("js_code", code);
+    //
+    //     System.out.println("code = " + code);
+    //
+    //     String url = "https://api.weixin.qq.com/sns/jscode2session?appid={appid}&secret={secret}&js_code={js_code}&grant_type=authorization_code";
+    //     //https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+    //
+    //     OpenIdBean openIdBean = openIdUtil.restTemplate.getForObject(url, OpenIdBean.class, map);
+    //
+    //     System.out.println("openIdBean = " + openIdBean);
+    //
+    //     return openIdBean.getOpenId();
+    // }
 
-}
-
-class OpenIdBean {
-    private String openId;
-
-    private OpenIdBean() {
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
-    }
 }

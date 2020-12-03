@@ -105,6 +105,16 @@ and s.time_id=#{timeId}
 ) !=1
     </select>
 
+    <select id="getLeaStuNum" resultType="java.lang.Integer">
+         select distinct student_id
+        from selects s
+        left join note n on s.note_id = n.note_id
+        where time_id = ${timeId}
+        and  str_to_date(#{courseDate},'%Y-%m-%d') >= str_to_date(start_time,'%Y-%m-%d')
+        and  str_to_date(end_time,'%Y-%m-%d') >= str_to_date(#{courseDate},'%Y-%m-%d')
+        and n.state = 0
+    </select>
+
 
     <select id="selectByExample" parameterType="cn.tivnan.studentls.bean.NoteExample" resultMap="BaseResultMap">
         select

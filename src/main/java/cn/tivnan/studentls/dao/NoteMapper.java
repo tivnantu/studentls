@@ -32,4 +32,6 @@ public interface NoteMapper {
     int updateByPrimaryKey(Note record);
 
     List<NoteNeedReviewVO> getNoteNeedReview(@Param("id") Integer id, @Param("timeId") Integer timeId);
+
+    List<Integer> getLeaStuNum(@Param("timeId") Integer timeId, @Param("courseDate") String courseDate);
 }

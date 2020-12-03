@@ -154,12 +154,20 @@ public class NoteController {
      */
     @ResponseBody
     @RequestMapping(value = "/teacher/note/verifyRequest", method = RequestMethod.GET)
-    public Boolean verifNote(@RequestParam("noteId") Integer noteId,
-                             @RequestParam("opinion") String opinion,
-                             @RequestParam("id") Integer id,
-                             @RequestParam("sectionId") Integer timesId) {
+    public HashMap<String, Object> verifNote(@RequestParam("noteId") Integer noteId,
+                                             @RequestParam("opinion") String opinion,
+                                             @RequestParam("id") Integer id,
+                                             @RequestParam("sectionId") Integer timesId) {
 
-        return noteService.verifyNote(noteId, opinion, id, timesId);
+        HashMap<String, Object> map = new HashMap<>();
+
+        if (noteService.verifyNote(noteId, opinion, id, timesId)) {
+            map.put("isReviewSuccess", Boolean.TRUE);
+        } else {
+            map.put("isReviewSuccess", Boolean.FALSE);
+        }
+
+        return map;
 
     }
 

@@ -104,6 +104,7 @@ public class UserService {
      */
     public User auth(String type, Integer id, String openId) {
         User userFromEdu = getUserFromEdu(type, id);
+        System.out.println("userFromEdu = " + userFromEdu);
         //确认教务系统是否存在该id所对应的身份
         if (userFromEdu == null) {
             return null;

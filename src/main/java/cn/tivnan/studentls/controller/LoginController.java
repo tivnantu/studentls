@@ -3,10 +3,12 @@ package cn.tivnan.studentls.controller;
 import cn.tivnan.studentls.bean.Student;
 import cn.tivnan.studentls.bean.User;
 import cn.tivnan.studentls.service.UserService;
-import cn.tivnan.studentls.utils.OpenIdUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,10 +23,15 @@ import java.util.Map;
  **/
 @Controller
 public class LoginController {
-
     @Autowired
     UserService userService;
 
+    @Autowired
+    RestTemplate restTemplate;
+
+
+    private static final String APPSECRET = "e4880f49fecea8a6b9fd49a9e5d4dc50";
+    private static final String APPID = "wx07026120b8ca5c85";
 
     /**
      * 登录接口
@@ -38,7 +45,8 @@ public class LoginController {
     public Map<String, Object> login(@RequestParam("code") String code) {
 
         //获取OpenId，然后从数据库读取用户数据
-        String openId = OpenIdUtil.getOpenId(code);
+
+        String openId = getOpenId(code);
         // String openId = code;
         User user = userService.login(openId);
 
@@ -90,6 +98,32 @@ public class LoginController {
         map.put("user", authUser);
 
         return map;
+    }
+
+    public String getOpenId(String code) {
+
+        HashMap<String, String> map = new HashMap<>(3);
+        map.put("appid", APPID);
+        map.put("secret", APPSECRET);
+        map.put("js_code", code);
+
+        System.out.println("code = " + code);
+
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid={appid}&secret={secret}&js_code={js_code}&grant_type=authorization_code";
+
+        String openIdBean = restTemplate.getForObject(url, String.class, map);
+
+
+        ObjectMapper mapper = new ObjectMapper();
+        HashMap<String, Object> jsonMap = null;
+        try {
+            jsonMap = mapper.readValue(openIdBean, HashMap.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        System.out.println(jsonMap.get("openid"));
+
+        return (String) jsonMap.get("openid");
     }
 
 
