@@ -44,7 +44,7 @@ public class AttendanceImpl implements cn.tivnan.studentls.webservice.Attendance
             Student student = studentMapper.selectByPrimaryKey(leaStuNum);
             str += student.getName() + "%";
         }
-
+        System.out.println(str);
         return str;
     }
 }
