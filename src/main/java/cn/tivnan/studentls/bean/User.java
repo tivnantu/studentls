@@ -63,8 +63,6 @@ public class User {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public String toString() {
@@ -74,5 +72,4 @@ public class User {
                 ", openId='" + openId + '\'' +
                 '}';
     }
->>>>>>> dev
 }
