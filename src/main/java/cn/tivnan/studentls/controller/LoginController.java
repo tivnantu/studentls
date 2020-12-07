@@ -107,7 +107,7 @@ public class LoginController {
         map.put("secret", APPSECRET);
         map.put("js_code", code);
 
-        System.out.println("code = " + code);
+        // System.out.println("code = " + code);
 
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid={appid}&secret={secret}&js_code={js_code}&grant_type=authorization_code";
 
@@ -121,7 +121,7 @@ public class LoginController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        System.out.println(jsonMap.get("openid"));
+        // System.out.println(jsonMap.get("openid"));
 
         return (String) jsonMap.get("openid");
     }
