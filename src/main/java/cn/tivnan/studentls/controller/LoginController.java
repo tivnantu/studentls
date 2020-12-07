@@ -30,8 +30,8 @@ public class LoginController {
     RestTemplate restTemplate;
 
 
-    private static final String APPSECRET = "e4880f49fecea8a6b9fd49a9e5d4dc50";
-    private static final String APPID = "wx07026120b8ca5c85";
+    private static final String APPSECRET = "APPSECRET";
+    private static final String APPID = "APPID";
 
     /**
      * 登录接口
