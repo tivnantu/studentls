@@ -7,6 +7,15 @@ public class Review {
 
     private Integer timeId;
 
+    public Review() {
+    }
+
+    public Review(Integer teacherId, Integer noteId, Integer timeId) {
+        this.teacherId = teacherId;
+        this.noteId = noteId;
+        this.timeId = timeId;
+    }
+
     public Integer getTeacherId() {
         return teacherId;
     }

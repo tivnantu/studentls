@@ -2,7 +2,10 @@ package cn.tivnan.studentls.dao;
 
 import cn.tivnan.studentls.bean.Note;
 import cn.tivnan.studentls.bean.NoteExample;
+
 import java.util.List;
+
+import cn.tivnan.studentls.bean.vo.NoteNeedReviewVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface NoteMapper {
@@ -27,4 +30,8 @@ public interface NoteMapper {
     int updateByPrimaryKeySelective(Note record);
 
     int updateByPrimaryKey(Note record);
+
+    List<NoteNeedReviewVO> getNoteNeedReview(@Param("id") Integer id, @Param("timeId") Integer timeId);
+
+    List<Integer> getLeaStuNum(@Param("timeId") Integer timeId, @Param("courseDate") String courseDate);
 }
